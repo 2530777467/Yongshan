@@ -1,0 +1,333 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/oder-form.css"/>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	</head>
+
+	<body>
+		<div class="mui-content">
+		    <header class="mui-bar mui-bar-nav">
+		        <h1 class="mui-title">订单</h1>
+		    </header>
+		    <div class="oder-list" id="oder-list">
+		    	<div class="oder-detail" id="oder-detail">
+		    		<!--<div class="detail-list">
+		    			<div class="left-img">
+	    					<img src="img/su4.jpg"/>
+	    				</div>
+	    				<div class="right-text">
+	    					<h5>火锅</h5>
+	    					<p class="rt01">菜系：川菜</p>
+	    					<p class="rt02">
+	    						<span class="list-price"> 988</span>
+	    					</p>
+	    					<p class="rt03">
+	    						<span class="btn-jian"></span>
+	    						<span class="btn-shu">1</span>
+	    						<span class="btn-jia"></span>
+	    					</p>
+	    				</div>
+		    		</div>	-->
+		    	</div>
+		    	<div class="oder-total" id="oder-total">
+		    		<div class="total-price">
+		    			<p class="all" id="all"></p>
+		    			<p class="song"> 2元(配送)</p>
+		    			<p class="bao"> 1元(包装)</p>
+		    		</div>
+		    		<a href="#oder"><button type="button" class="ys-btn-block" id="gotopay">结算</button></a>
+		    	</div>
+		    </div>
+		    <div id="userinfobox" class="hidden">
+			    <form class="ys-input-group">
+			        <div class="ys-input-row">
+			            <input type="text" id="ys-name" class="ys-input-clear" placeholder="取餐者姓名">
+			        </div>
+			        <div class="ys-input-row">
+			            <input type="text" id="ys-tel" class="ys-input-clear" placeholder="取餐者电话">
+			        </div>
+			        <div class="ys-input-row">
+			            <select name="ysaddress" id="ys-address" class="dong" placeholder="取餐者地址" style="font-size: 17px;">
+							<option value="" disabled selected>取餐者地址</option>
+							<option value="重庆财经学院教学楼">重庆财经学院教学楼</option>
+							<option value="重庆财经学院云篆苑13栋">重庆财经学院云篆苑13栋</option>
+							<option value="重庆财经学院云篆苑12栋">重庆财经学院云篆苑12栋</option>
+							<option value="重庆财经学院云篆苑11栋">重庆财经学院云篆苑11栋</option>
+							<option value="重庆财经学院云篆苑10栋">重庆财经学院云篆苑10栋</option>
+							<option value="重庆财经学院云篆苑9栋">重庆财经学院云篆苑9栋</option>
+							<option value="重庆财经学院云篆苑8栋">重庆财经学院云篆苑8栋</option>
+							<option value="重庆财经学院云篆苑7栋">重庆财经学院云篆苑7栋</option>
+							<option value="重庆财经学院云篆苑6栋">重庆财经学院云篆苑6栋</option>
+							<option value="重庆财经学院云篆苑6栋">重庆财经学院云篆苑6栋</option>
+							<option value="重庆财经学院云篆苑4栋">重庆财经学院云篆苑4栋</option>
+							<option value="重庆财经学院云篆苑3栋">重庆财经学院云篆苑3栋</option>
+							<option value="重庆财经学院云篆苑2栋">重庆财经学院云篆苑2栋</option>
+							<option value="重庆财经学院云篆苑1栋">重庆财经学院云篆苑1栋</option>
+							<option value="重庆财经学院尚文苑G4高层">重庆财经学院尚文苑G4高层</option>
+							<option value="重庆财经学院尚文苑G5高层">重庆财经学院尚文苑G5高层</option>
+						</select>
+			        </div>
+			        <div class="ys-input-row">
+			            <input type="text" id="ys-number" class="ys-input-clear" placeholder="门牌号（如：317）">
+			        </div>
+			    </form>
+			    <div class="ys-input-row" id="oder">
+		    	    <button type="button" class="ys-btn ys-btn-oder" id="btn-oder">确认下单</button>
+		    	</div>
+		    </div>
+		</div>
+		
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			//设置select的默认选中项颜色
+		    $(function () {
+		        var unSelected = "#757575";
+		        var selected = "#000000";
+		        $(function () {
+		            $("select").css("color", unSelected);
+		            $("option").css("color", selected);
+		            $("select").change(function () {
+		                var selItem = $(this).val();
+		                if (selItem == $(this).find('option:first').val()) {
+		                    $(this).css("color", unSelected);
+		                } else {
+		                    $(this).css("color", selected);
+		                }
+		            });
+		        })
+		    });
+			
+			
+			
+			mui.ready(function(){
+				cardatainit();
+			});
+			document.getElementById("btn-oder").addEventListener("tap",function(){
+				var truename=document.getElementById("ys-name").value;
+				var tel=document.getElementById("ys-tel").value;
+				var address=document.getElementById("ys-address").value;
+				var number=document.getElementById("ys-number").value;
+				var userid=localStorage.getItem("id");
+				
+				var requrl=localStorage.getItem("requrl");
+				mui.ajax(requrl,{
+						data:{
+							rnum:"9",
+	                  		userid:userid,
+	                  		tbname:truename,
+	                  		tbaddress:address,
+	                  		tbnumber:number,
+	                  		tbtel:tel
+						},
+						dataType:'json',//服务器返回json格式数据
+						type:'post',//HTTP请求类型
+						timeout:10000,//超时时间设置为10秒；
+						headers:{'Content-Type':'application/x-www-form-urlencoded'},
+						success:function(data){
+							mui.toast("下单成功!");
+							mui.openWindow({
+								url:"history.html",
+								id:"history.html"
+							});
+							cardatainit();
+							document.getElementById("userinfobox").className="hidden";
+//							setTimeout(function(){
+//								mui.back();
+//							},1000);
+						}
+				});
+			});
+			
+			
+			
+			//自定义事件，用于在其他页面触发  刷新购物车里面商品列表数据
+			document.addEventListener('bindcardata', function() {
+				cardatainit(); 
+			});
+
+			
+			
+			//初始化购物车里面的数据
+			function cardatainit()
+			{
+				//查询当前登录app的用户在购物车中加入的商品。 把查询出来的数据绑定到ul中。
+				//需要的参数：userid
+				
+				var requrl=localStorage.getItem("requrl");
+				var userid=localStorage.getItem("id");
+				
+				
+//				<div class="detail-list">
+//	    			<div class="left-img">
+//  					<img src="img/su4.jpg"/>
+//  				</div>
+//  				<div class="right-text">
+//  					<h5>火锅</h5>
+//  					<p class="rt01">菜系：川菜</p>
+//  					<p class="rt02">
+//  						<span class="list-price"> 988</span>
+//  					</p>
+//  					<p class="rt03">
+//  						<span class="btn-jian"></span>
+//  						<span class="btn-shu">1</span>
+//  						<span class="btn-jia"></span>
+//  					</p>
+//  				</div>
+//	    		</div>
+				
+				mui.ajax(requrl,{
+						data:{
+							rnum:"6",
+							userid:userid                  		
+						},
+						dataType:'json',//服务器返回json格式数据
+						type:'post',//HTTP请求类型
+						timeout:10000,//超时时间设置为10秒；
+						headers:{'Content-Type':'application/x-www-form-urlencoded'},
+						success:function(data){
+							console.log(JSON.stringify(data));
+							var htmlstr="";
+							var sumprice=0;
+							for (var i=0;i<data.length;i++) {
+								htmlstr+='<div class="detail-list">';
+									htmlstr+='<div class="left-img">';
+//										htmlstr+='<img src="http://10.150.124.23:8080/YongshanManage/upload/'+data[i].imgurl+'"/>';
+										htmlstr+='<img src="http://192.168.43.179:8080/YongshanManage/upload/'+data[i].imgurl+'"/>';
+									htmlstr+='</div>';
+									htmlstr+='<div class="right-text">';
+										htmlstr+='<h5>'+data[i].proname+'</h5>';
+										htmlstr+='<p class="rt01">菜系：'+data[i].kind+'</p>';
+										htmlstr+='<p class="rt02">';
+											htmlstr+='<span class="list-price"> '+data[i].price+'</span>';
+										htmlstr+='</p>';
+										htmlstr+='<p class="rt03" id="'+data[i].proid+'">';
+											htmlstr+='<span class="btn-jian"></span>';
+											htmlstr+='<span class="btn-shu">'+data[i].procount+'</span>';
+											htmlstr+='<span class="btn-jia"></span>';
+										htmlstr+='</p>';
+									htmlstr+='</div>';
+								htmlstr+='</div>';
+								sumprice +=parseFloat(data[i].price)*parseInt(data[i].procount);//   单价*数量=小计  然后通过累加 把所有商品的价格累加起来 保存在sumprice中。 这里要注意，计算价格之前，要把单价和数量都转为数字。
+							}
+							sumprice +=3;
+							allprice = (sumprice).toFixed(2);
+							document.getElementById("all").innerText=allprice;
+							document.getElementById("oder-detail").innerHTML=htmlstr;
+							
+							temp = document.getElementById("oder-detail");
+							lis =temp.getElementsByClassName("detail-list");
+							if(lis.length > 0){
+								document.getElementById("oder-total").className="oder-total";
+							}
+							if(lis.length < 1){
+								document.getElementById("oder-total").className="hidden";
+							}
+						}
+				});				
+			}
+			
+			
+			//通过委托的方式给增加按钮绑定点击事件
+			mui("#oder-detail").on("tap","span.btn-jia",function(){
+				var proid=this.parentNode.getAttribute("id");
+				var userid=localStorage.getItem("id");
+				var v=this.parentNode.querySelector(".btn-shu").innerText;//获取该商品原来在购物车中的数量
+				v=parseInt(v);
+				v=v+1;
+				
+				var requrl=localStorage.getItem("requrl");
+				mui.ajax(requrl,{
+						data:{
+							rnum:"8",
+	                  		userid:userid,
+	                  		id:proid,
+	                  		countvalue:v
+						},
+						dataType:'json',//服务器返回json格式数据
+						type:'post',//HTTP请求类型
+						timeout:10000,//超时时间设置为10秒；
+						headers:{'Content-Type':'application/x-www-form-urlencoded'},
+						success:function(data){
+							cardatainit();
+						}
+				});		
+			});
+			
+			
+			mui("#oder-detail").on("tap","span.btn-jian",function(){
+				var proid=this.parentNode.getAttribute("id");
+				var userid=localStorage.getItem("id");
+				var v=this.parentNode.querySelector(".btn-shu").innerText;//获取该商品原来在购物车中的数量
+				v=parseInt(v);
+				v=v-1;
+				var requrl=localStorage.getItem("requrl");
+				if(v<1)
+				{
+					//如果购物车里面商品的数量小于1,就需要删除该商品
+					mui.ajax(requrl,{
+							data:{
+								rnum:"7",
+		                  		userid:userid,
+		                  		id:proid
+							},
+							dataType:'json',//服务器返回json格式数据
+							type:'post',//HTTP请求类型
+							timeout:10000,//超时时间设置为10秒；
+							headers:{'Content-Type':'application/x-www-form-urlencoded'},
+							success:function(data){
+								if(data.msg=="ok")
+								{
+									mui.toast("删除成功!");
+								}
+								cardatainit();
+							}
+					});		
+					
+					
+				}
+				else
+				{
+					//如果商品的数量不小于1，只需要将该商品的数量减少1就可以了。
+					
+					mui.ajax(requrl,{
+							data:{
+								rnum:"8",
+		                  		userid:userid,
+		                  		id:proid,
+		                  		countvalue:v
+							},
+							dataType:'json',//服务器返回json格式数据
+							type:'post',//HTTP请求类型
+							timeout:10000,//超时时间设置为10秒；
+							headers:{'Content-Type':'application/x-www-form-urlencoded'},
+							success:function(data){
+								cardatainit();
+							}
+					});		
+					
+				}
+				
+				
+				
+			});
+			
+			
+			//点击去结算按钮
+			document.getElementById("gotopay").addEventListener("tap",function(){
+				document.getElementById("userinfobox").className="show";
+				document.getElementById("ys-name").value=localStorage.getItem('truename');
+				document.getElementById("ys-tel").value=localStorage.getItem('tel');
+				document.getElementById("ys-address").value=localStorage.getItem('address');
+			});
+		</script>
+	</body>
+
+</html>

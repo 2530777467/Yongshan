@@ -1,0 +1,69 @@
+{
+  "main.html": {
+    "resources": [
+      "index.html"
+    ],
+    "refer": [
+      "index.html",
+      "mine.html",
+      "oder_form.html",
+      "oder-form.html"
+    ]
+  },
+  "mine.html": {
+    "refer": [
+      "feedback.html",
+      "login.html",
+      "more.html",
+      "history.html",
+      "customer-service.html"
+    ],
+    "resources": []
+  },
+  "login.html": {
+    "refer": [
+      "main.html",
+      "reg.html"
+    ],
+    "resources": [
+      "img/yongshanlogo.png",
+      "js/mui.min.js",
+      "css/login.css",
+      "js/jquery-1.11.0.js",
+      "fonts/icomoon.ttf",
+      "css/mui.min.css",
+      "css/style.css",
+      "css/icons-extra02.css"
+    ]
+  },
+  "reg.html": {
+    "refer": [
+      "login.html"
+    ],
+    "resources": [
+      "css/login.css",
+      "css/mui.min.css",
+      "css/style.css",
+      "css/icons-extra02.css"
+    ]
+  },
+  "index.html": {
+    "refer": [
+      "index-chuan.html",
+      "index-xiang.html",
+      "index-zhe.html",
+      "index-min.html",
+      "index-su.html",
+      "index-hui.html",
+      "index-yue.html",
+      "index-lu.html"
+    ],
+    "resources": []
+  },
+  "oder-form.html": {
+    "refer": [
+      "history.html"
+    ],
+    "resources": []
+  }
+}

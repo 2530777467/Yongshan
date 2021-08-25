@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link rel="stylesheet" type="text/css" href="css/icons-extra02.css" />
+		<link rel="stylesheet" type="text/css" href="css/customer-service.css" />
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<header class="mui-bar mui-bar-nav">
+				<a class="mui-action-back mui-icon mui-icon-extra02 mui-icon-extra-undo2 mui-pull-left"></a>
+				<h1 class="mui-title">客服中心</h1>
+			</header>
+			<div class="content">
+				<div class="top">
+					<p class="p-top">
+						<span class="s1"></span>
+						 很高兴为您服务
+						<span class="s2"> 热线</span>
+						<span class="s3"> 进度</span>
+					</p>
+				</div>
+				<div class="issue">
+					<h4>常见问题</h4>
+					<div class="i-list">
+						<div class="i-list-1">
+							<p class="Q">
+								Q：为什么提示我“账户异常，无法下单”？
+							</p>
+						</div>
+						<div class="i-list-2 hidden">
+							<p class="A">包含（但不仅限于）以下行为者，系统将自动予以封禁（客服无权解封）：</p>
+							<p class="A">i）有过虚假交易（编造不存在真实买卖的订单）；</p>
+							<p class="A">ii）有过恶意下单行为；</p>
+						</div>
+					</div>
+					<div class="i-list">
+						<div class="i-list-1">
+							<p class="Q">
+								Q：在线支付取消订单后钱怎么返还？
+							</p>
+						</div>
+						<div class="i-list-2 hidden">
+							<p class="A">订单取消后，款项会在一个工作日内，直接返还到您的美团账户余额。</p>
+						</div>
+					</div>
+					<div class="i-list">
+						<div class="i-list-1">
+							<p class="Q">
+								Q：如果对商家服务不满意如何进行投诉？
+							</p>
+						</div>
+						<div class="i-list-2 hidden">
+							<p class="A">您可以在该订单完成评价后点击订单详情页中的意见反馈向客服投诉，或者拨打用膳外卖的客服电话（10109777）向客服进行投诉。</p>
+						</div>
+					</div>
+					<div class="i-list">
+						<div class="i-list-1">
+							<p class="Q">
+								Q：如何联系客服解决问题？
+							</p>
+						</div>
+						<div class="i-list-2 hidden">
+							<p class="A">您可以拨打美团外卖的客服电话（10109777）或者在“我的”——>“意见反馈”页面提交反馈</p>
+						</div>
+					</div>
+					<div class="i-list">
+						<div class="i-list-1">
+							<p class="Q">
+								Q：我用的是手机客户端，为什么无法定位？
+							</p>
+						</div>
+						<div class="i-list-2 hidden">
+							<p class="A">用膳外卖只用于重庆财经学院。</p>
+						</div>
+					</div>
+					<div class="i-list">
+						<div class="i-list-1">
+							<p class="Q">
+								Q：余额提现到账时间是多久？
+							</p>
+						</div>
+						<div class="i-list-2 hidden">
+							<p class="A">1-7个工作日内可退回您的支付账户。由于银行处理可能有延迟，具体以账户的到账时间为准。</p>
+						</div>
+					</div>
+				</div>
+				<div class="online">
+					<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2909880979&site=qq&menu=yes">
+						<img border="0" src="img/online.png" alt="点击这里给我发消息" title="点击这里给我发消息" />
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+//			mui.plusReady(function() {
+//				plus.webview.currentWebview().setStyle({
+//					statusbar: {
+//						background: '#EBC175'
+//					},
+//					top: 0,
+//					bottom: 0　　
+//				});
+//			});
+			
+			$(function(){
+				//监听点击数件
+				$(".issue .i-list").click(function(){
+					//拿到二级菜单
+					var $sub=$(this).children(".i-list-2");
+					//让二级菜单展开
+					$sub.slideToggle();					
+				});	 
+			});
+		</script>
+	</body>
+
+</html>

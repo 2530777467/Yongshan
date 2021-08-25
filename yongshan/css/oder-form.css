@@ -1,0 +1,189 @@
+.mui-content{
+	background: url(../img/none-1.png);
+    min-height: 200px;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: 90%;
+}
+.oder-list{
+	margin: 0 auto;
+	margin-top: 54px;
+	width: 94%;
+	min-height: 5px;
+}
+.oder-list .oder-detail{
+	width: 100%;
+	min-height: 5px;
+}
+.hidden{
+	display: none;
+}
+.show{
+	display: block;
+}
+.oder-list .oder-detail .detail-list{
+	position: relative;
+	width: 100%;
+	min-height: 135px;
+	background-color: #FFFFFF;
+	border-radius: 15px;
+	margin-bottom: 10px;
+}
+.oder-list .oder-detail .detail-list .left-img{
+	width: 30%;
+	height: 130px;
+	padding: 10px;
+	
+}
+.oder-list .oder-detail .detail-list .left-img img{
+	width: 100%;
+	border-radius: 15px;
+}
+.oder-list .oder-detail .detail-list .right-text{
+	position: absolute;
+	padding: 10px;
+	top: 0;
+	right: 0;
+	width: 70%;
+	height: 130px;
+}
+.oder-list .oder-detail .detail-list .right-text h5{
+	font-size: 18px;
+	color: #292929;
+}
+.oder-list .oder-detail .detail-list .right-text .rt01{
+	margin-top: 18px;
+	margin-bottom: 5px;
+	width: 100%;
+	height: 18px;
+	line-height: 18px;
+	color: #292929;
+}
+.oder-list .oder-detail .detail-list .right-text .rt02{
+	width: 100%;
+	height: 25px;
+	line-height: 25px;
+	font-size: 18px;
+	color: red;
+}
+.oder-list .oder-detail .detail-list .right-text .rt02 .list-price::before{
+	font-family: 'icomoon';
+	content: '\e93e';
+	color: red;
+	font-size: 18px;
+}
+.oder-list .oder-detail .detail-list .right-text .rt03{
+	position: absolute;
+	bottom: 0%;
+	right: 20px;
+	width: 75px;
+	height: 25px;
+}
+.oder-list .oder-detail .detail-list .right-text .rt03 span{
+	display: block;
+	float: left;
+	width: 25px;
+	height: 25px;
+	line-height: 25px;
+	text-align: center;
+}
+.oder-list .oder-detail .detail-list .right-text .rt03 .btn-jian{
+	border: 1px solid #929292;
+	border-radius: 50%;
+}
+.oder-list .oder-detail .detail-list .right-text .rt03 .btn-jia{
+	color: #292929;
+	border: 1px solid #EBC175;
+	border-radius: 50%;
+	background-color: #EBC175;
+}
+.oder-list .oder-detail .detail-list .right-text .rt03 .btn-jian::before{
+	font-family: 'icomoon';
+	content: '\ea22';
+}
+.oder-list .oder-detail .detail-list .right-text .rt03 .btn-jia::before{
+	font-family: 'icomoon';
+	content: '\ea21';
+}
+.oder-list .oder-detail .detail-list .right-text .rt03 .btn-shu{
+	/*border: 1px solid #EBC175;*/
+	/*margin: 0 5px;*/
+	font-size: 18px;
+	color: #292929;
+}
+.oder-list .oder-total{
+	position: relative;
+	width: 100%;
+	height: 56px;
+	line-height: 56px;
+	margin-bottom: 10px;
+}
+.oder-list .oder-total .total-price{
+	position: relative;
+	overflow: hidden;
+	width: 70%;
+	padding-left: 5%;
+	color: #EBC175;
+	height: 56px;
+	border-radius: 28px 0 0 28px;
+	background-color: #010101;
+}
+.oder-list .oder-total .total-price p{
+	display: block;
+	height: 25px;
+	line-height: 25px;
+	color: #929292
+}
+.oder-list .oder-total .total-price .all{
+	width: 100%;
+	margin-top: 5px;
+	color: #EBC175;
+	margin-bottom: 0;
+	font-size: 18px;
+}
+.oder-list .oder-total .total-price .all::before{
+	font-family: 'icomoon';
+	content: '\e93e';
+	font-size: 18px;
+}
+.oder-list .oder-total .total-price .song{
+	float: left;
+	font-size: 12px;
+}
+.oder-list .oder-total .total-price .bao{
+	float: left;
+	font-size: 12px;
+	padding-left: 5px;
+}
+.oder-list .oder-total .ys-btn-block{
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 30%;
+	height: 56px;
+	color: #292929;
+	font-size: 18px;
+	border: none;
+	border-radius: 0 28px 28px 0;
+	background-color: #EBC175;
+}
+.ys-input-row{
+	width: 92%;
+	margin: 0 auto;
+}
+.ys-input-row .dong{
+	font-size: 17px;
+}
+.ys-input-row .ys-btn{
+	font-size: 18px;
+	height: 44px;
+	width: 100%;
+	margin-bottom: 10px;
+	color: #292929;
+	background-color: #EBC175;
+	border: none;
+}
+.ys-input-row .ys-btn-oder{
+	color: #292929;
+	background-color: #EBC175;
+}

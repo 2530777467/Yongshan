@@ -1,0 +1,141 @@
+.mui-content{
+	overflow: hidden;
+}
+.mui-action-back{
+	color: #292929;
+}
+.ys-meal-list{
+	overflow: hidden;
+	margin-top: 44px;
+	min-height: 200px;
+}
+.ys-meal-list .list-head{
+	width: 94%;
+	height: 40px;
+	margin: 0 auto;
+	margin-top: 10px;
+}
+.ys-meal-list .list-head h4{
+	line-height: 20px;
+	padding: 10px;
+	border: 1px solid #EBC175;
+	border-radius: 15px;
+	color: #292929;
+}
+.ys-meal-list .list-head h4::before{
+	font-family: 'icomoon';
+	content: '\e9bd';
+	color: #EBC175;
+}
+.ys-meal-list .list-sort{
+	padding: 10px;
+	width: 94%;
+	margin: 0 auto;
+	font-size: 14px;
+} 
+.ys-meal-list .list-sort span{
+	margin-right: 10px;
+}
+.ys-meal-list .list-sort .zonghe::after{
+	font-family: 'icomoon';
+	content: '\e902';
+}
+.ys-meal-list .list-meal{
+	position: relative;
+	margin: 0 auto;
+	width: 94%;
+	height: 150px;
+	margin-bottom: 10px;
+	border-radius: 15px;
+	background-color: #FFFFFF;
+}
+.ys-meal-list .list-meal .left-img{
+	width: 30%;
+	height: 150px;
+	border-radius: 20px;
+}
+.ys-meal-list .list-meal .left-img img{
+	padding: 10px;
+	width: 100%;
+	border-radius: 20px;
+	
+}
+.ys-meal-list .list-meal .right-text{
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 70%;
+	height: 150px;
+	/*background-color: #0062CC;*/
+}
+.ys-meal-list .list-meal .right-text h5{
+	padding: 10px 0 0 10px;
+	font-size: 18px;
+	color: #292929;
+}
+.ys-meal-list .list-meal .right-text p{
+	padding: 0 0 0 10px;
+	color: #929292;
+	height: 16px;
+	line-height: 16px;
+}
+.ys-meal-list .list-meal .right-text .rt01{
+	font-size: 12px;
+}
+.ys-meal-list .list-meal .right-text span{
+	margin-right: 10px;
+}
+.ys-meal-list .list-meal .right-text .score::before{
+	font-family: 'icomoon';
+	content: '\e9d9';
+	color: #EBC175;
+}
+.ys-meal-list .list-meal .right-text .time,
+.ys-meal-list .list-meal .right-text .list-add{
+	float: right;
+	padding-right: 15px;
+}
+.ys-meal-list .list-meal .right-text .list-price{
+	color: #FF5053;
+	font-size: 18px;
+}
+.ys-meal-list .list-meal .right-text .list-price::before{
+	font-family: 'icomoon';
+	content: '\e93e';
+	color: #FF5053;
+}
+.ys-meal-list .list-meal .right-text .list-add{
+	height: 30px;
+	width: 30px;
+	margin-right: 20px;
+	line-height: 30px;
+	background-color: #EBC175;
+	border-radius: 50%;
+}
+.ys-meal-list .list-meal .right-text .list-add::before{
+	font-family: 'icomoon';
+	content: '\ea21';
+	color: #292929;
+	font-size: 16px;
+	padding-left: 7px;
+}
+.back-top{
+	position: fixed;
+	bottom: 10px;
+	left: 10px;
+	width: 50px;
+	height: 50px;
+	background-color: #FFFFFF;
+	border: 1px solid #EBC175;
+	border-radius: 15px;
+}
+.back-top .p-back-top{
+	text-align: center;
+	line-height: 48px;
+	color: #EBC175;
+}
+.back-top .p-back-top::before{
+	font-family: 'icomoon';
+	content: '\ea4d';
+	font-size: 26px;
+}

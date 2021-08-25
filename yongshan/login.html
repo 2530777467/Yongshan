@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/icons-extra02.css"/>
+		<link rel="stylesheet" type="text/css" href="css/login.css"/>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	</head>
+
+	<body>
+		<div class="mui-content">
+		    <header class="mui-bar mui-bar-nav">
+		        <a class="mui-action-back mui-icon mui-icon-extra02 mui-icon-extra-undo2 mui-pull-left"></a>
+		        <h1 class="mui-title">登录</h1>
+		    </header>
+		    <div class="login">
+		    	<div class="logimg">
+		    		<img src="img/yongshanlogo.png"/>
+		    	</div>
+		    	<form class="ys-input-group">
+		    	    <div class="ys-input-row">
+		    	        <input type="text" class="ys-input-clear" id="ys-username" placeholder="用户名">
+		    	    </div>
+		    	    <div class="ys-input-row">
+		    	        <input type="password" class="ys-input-clear" id="ys-password" placeholder="密码">
+		    	    </div>
+		    	    <div class="ys-input-row">
+		    	        <span class="forget" id="">
+		    	        	忘记密码
+		    	        </span>
+		    	    </div>
+		    	    <div class="ys-input-row">
+		    	        <button type="button" class="ys-btn ys-btn-login" id="btn-login">登录</button>
+		    	    </div>
+		    	    <div class="ys-input-row">
+		    	        <button type="button" class="ys-btn ys-btn-reg" id="btn-reg">注册</button>
+		    	    </div>
+		    	</form>
+		    </div>
+		    <div class="treaty">
+	    		<p>
+	    			登录代表您已同意<span class="s-treaty">用膳用户协议</span>、<span class="s-treaty">隐私协议</span>
+	    		</p>
+		    </div>
+		</div>
+		
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			var requrl="http://192.168.43.179:8080/YongshanManage/JavaApi";
+//			var requrl="http://10.150.124.23:8080/YongshanManage/JavaApi";
+			localStorage.setItem("requrl",requrl);
+			mui.plusReady(function(){                      
+//			    plus.webview.currentWebview().setStyle({
+//			        statusbar:{background:'#EBC175'},top:0,bottom: 0
+//			　　});
+				plus.navigator.setStatusBarStyle('dark');//设置系统状态栏样式 (可选值:dark,light,UIStatusBarStyleDefault,UIStatusBarStyleBlackOpaque)
+				plus.navigator.setStatusBarBackground('#EBC175');//设置状态栏的颜色	
+				
+			});
+//			mui.plusReady(function(){                      
+//			    plus.webview.currentWebview().setStyle({
+//			        statusbar:{background:'#EBC175'},top:0,bottom: 0
+//			　　});
+//			});
+			
+			document.getElementById('btn-reg').addEventListener("tap",function(){
+				mui.openWindow({
+					url:"reg.html"
+				});
+			});
+			
+			document.getElementById("btn-login").addEventListener("tap",function(){
+				console.log(123);
+				var username=document.getElementById("ys-username").value;
+				var password=document.getElementById("ys-password").value;
+				var requrl=localStorage.getItem("requrl");
+				mui.ajax(requrl,{
+						data:{
+							rnum:"2",
+	                  		username:username,
+	                  		password:password
+						},
+						dataType:'json',//服务器返回json格式数据
+						type:'post',//HTTP请求类型
+						timeout:10000,//超时时间设置为10秒；
+						headers:{'Content-Type':'application/x-www-form-urlencoded'},
+						success:function(data){
+					    	console.log(JSON.stringify(data));	
+							if(data==null||data=="")
+							{
+								mui.toast("用户名或者密码错误!");
+							}
+							else
+							{
+								console.log(data[0]);
+								mui.toast("登录成功!");
+								localStorage.setItem("id",data[0].id);
+								localStorage.setItem("username",data[0].username);
+								localStorage.setItem("truename",data[0].truename);
+								localStorage.setItem("tel",data[0].tel);
+								localStorage.setItem("address",data[0].address);
+								var userid=data[0].id;
+								mui.openWindow({
+									url:"main.html",
+									id:"main.html"
+								});
+							}	
+						}
+					});
+				});
+		</script>
+	</body>
+
+</html>

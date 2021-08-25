@@ -1,0 +1,19 @@
+.mui-action-back{
+	color: #292929;
+	/*color: #ebc175;*/
+}
+.feedback-txt{
+	margin-top: 74px;
+}
+.ys-input-row{
+	width: 94%;
+	margin: 0 auto;
+}
+.ys-input-row .ys-btn{
+	font-size: 18px;
+	height: 44px;
+	width: 100%;
+	color: #292929;
+	border: none;
+	background-color: #EBC175;
+}

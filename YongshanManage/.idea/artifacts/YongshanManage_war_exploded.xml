@@ -1,0 +1,22 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="YongshanManage:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/YongshanManage_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="YongshanManage/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="YongshanManage" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="commons-codec-1.9" />
+          <element id="library" level="project" name="commons-fileupload-1.3.1" />
+          <element id="library" level="project" name="commons-io-2.4" />
+          <element id="library" level="project" name="fastjson-1.1.41" />
+          <element id="library" level="project" name="json" />
+          <element id="library" level="project" name="mysql-connector-java-5.1.45-bin" />
+          <element id="library" level="project" name="ueditor-1.1.2" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

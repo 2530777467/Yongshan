@@ -1,0 +1,88 @@
+.mui-action-back{
+	color: #292929;
+}
+.mui-content .content{
+	margin-top: 44px;
+	width: 100%;
+}
+.mui-content .content .top{
+	width: 100%;
+	height: 44px;
+	background-color: #EBC175;
+	margin: 0 auto;
+}
+.mui-content .content .top .p-top{
+	line-height: 44px;
+	color: #282828;
+	font-size: 17px;
+	padding: 0 10px;
+}
+.mui-content .content .top .p-top .s1::before{
+	font-family: 'icomoon';
+	content: '\eaf4';
+	font-size: 17px;
+}
+.mui-content .content .top .p-top .s2,
+.mui-content .content .top .p-top .s3{
+	display: block;
+	float: right;
+	height: 44px;
+	margin-left: 15px;
+	line-height: 44px;
+	text-align: center;
+	font-size: 14px;
+}
+.mui-content .content .top .p-top .s2::before{
+	font-family: 'icomoon';
+	content: '\e95e';
+}
+.mui-content .content .top .p-top .s3::before{
+	font-family: 'icomoon';
+	content: '\e9a9';
+}
+.mui-content .content .issue{
+	margin-top: 10px;
+	width: 100%;
+}
+.mui-content .content .issue h4{
+	padding: 2%;
+	background-color: #FFFFFF;
+}
+.mui-content .content .issue .hidden{
+	display: none;
+}
+.mui-content .content .issue .i-list{
+	width: 96%;
+	margin: 5px auto;
+	border: 1px solid #EBC175;
+	border-radius: 10px;
+	background-color: #FFFFFF;
+}
+.mui-content .content .issue .i-list .Q{
+	color: #282828;
+	line-height: 44px;
+	font-size: 16px;
+}
+.mui-content .content .issue .i-list .A{
+	text-indent:2em;
+}
+.mui-content .content .issue .i-list-1{
+	width: 96%;
+	height: 44px;
+	margin: 0 auto;
+}
+.mui-content .content .issue .i-list-2{
+	width: 96%;
+	margin: 0 auto;
+}
+.mui-content .content .online{
+	position: fixed;
+	bottom: 2%;
+	right: 2%;
+}
+.mui-content .content .online a img{
+	width: 100px;
+	height: 150px;
+	border: 1px solid #EBC175;
+	border-radius: 10px;
+}

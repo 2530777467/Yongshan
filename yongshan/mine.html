@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/mine.css"/>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	</head>
+
+	<body>
+		<div class="mui-content">
+		    <header class="mui-bar mui-bar-nav">
+		        <h1 class="mui-title">我的</h1>
+		        <div class="user">
+			    	<div class="headimg">
+			    		<img src="img/ys.png"/>
+			    	</div>
+			    	<div class="headname">
+			    		<p id="username"></p>
+			    		<p id="tel"></p>
+			    	</div>
+		   		</div>
+		    </header>
+		    <div class="head-list">
+		    	<ul class="mui-table-view">
+	    	        <li class="mui-table-view-cell" id="more">
+	    	            <a class="mui-navigate-right">
+	    	                <span class="row01"></span> 八大菜系
+	    	            </a>
+	    	        </li>
+	    	        <li class="mui-table-view-cell" id="history">
+	    	            <a class="mui-navigate-right">
+	    	                <span class="row07"></span> 历史订单
+	    	            </a>
+	    	        </li>
+	    	        <!--<li class="mui-table-view-cell">
+	    	            <a class="mui-navigate-right">
+	    	                <span  class="row02"></span> 我的地址
+	    	            </a>
+	    	        </li>
+	    	        <li class="mui-table-view-cell">
+	    	            <a class="mui-navigate-right">
+	    	                <span  class="row06"></span> 我的收藏
+	    	            </a>
+	    	        </li>-->
+	    	        <li class="mui-table-view-cell" id="customer-service">
+	    	            <a class="mui-navigate-right">
+	    	                <span class="row03"></span> 客服中心
+	    	            </a>
+	    	        </li>
+	    	        <li class="mui-table-view-cell" id="btn-feedback">
+	    	            <a class="mui-navigate-right">
+	    	                <span class="row04"></span> 意见反馈
+	    	            </a>
+	    	        </li>
+	    	        <!--<li class="mui-table-view-cell">
+	    	            <a class="mui-navigate-right">
+	    	                <span class="row05"></span> 协议说明
+	    	            </a>
+	    	        </li>-->
+		    	</ul>
+		    	<div class="exit" id="exit-id">
+		    		<p>退出账号 <span class="s-exit"></span></p>
+		    	</div>
+		    </div>
+		</div>
+		
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			var name=localStorage.getItem("username");
+			var tel=localStorage.getItem("tel");
+			document.getElementById("username").innerHTML="用户名:"+name;
+			document.getElementById("tel").innerHTML="电话:"+tel;
+			document.getElementById('more').addEventListener("tap",function(){
+				mui.openWindow({
+					url:"more.html"
+				});
+			});
+			document.getElementById('history').addEventListener("tap",function(){
+				mui.openWindow({
+					url:"history.html"
+				});
+			});
+			document.getElementById('customer-service').addEventListener("tap",function(){
+				mui.openWindow({
+					url:"customer-service.html"
+				});
+			});
+			document.getElementById('btn-feedback').addEventListener("tap",function(){
+				mui.openWindow({
+					url:"feedback.html"
+				});
+			});
+			document.getElementById("exit-id").addEventListener("tap",function(){
+				localStorage.removeItem("id");
+				localStorage.removeItem("truename");
+				localStorage.removeItem("address");
+				localStorage.removeItem("tel");
+				mui.openWindow({
+					url:"login.html",
+					id:"login.html"
+				});
+			
+			});
+			
+		</script>
+	</body>
+
+</html>

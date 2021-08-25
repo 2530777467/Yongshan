@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/index-eight.css"/>
+		<link rel="stylesheet" type="text/css" href="css/icons-extra02.css"/>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	</head>
+
+	<body>
+		<div class="mui-content">
+		    <header class="mui-bar mui-bar-nav">
+		        <a class="mui-action-back mui-icon mui-icon-extra02 mui-icon-extra-undo2 mui-pull-left"></a>
+		        <h1 class="mui-title">鲁菜</h1>
+		    </header>
+		    <div class="ys-meal-list">
+    			<div class="list-head">
+    				<h4> 清香、鲜嫩、味纯...</h4>
+    			</div>
+    			<div class="list-sort">
+    				<span class="zonghe">综合排序</span>
+    				<span class="xiaoliang">销量高</span>
+    				<span class="kuai">速度快</span>
+    			</div>
+    			<div class="meal-all" id="list-lu">
+	    			<!--<div class="list-meal">
+	    				<div class="left-img">
+	    					<img src="img/su4.jpg"/>
+	    				</div>
+	    				<div class="right-text">
+	    					<h5>东坡肉</h5>
+	    					<p class="rt01">
+	    						<span class="score">4.8</span>
+	    						<span class="amount">月销量1438</span>
+	    						<span class="time">30分钟</span>
+	    					</p>
+	    					<p class="rt02">菜系：苏菜</p>
+	    					<p class="rt03">菜品：猪肉、炒菜</p>
+	    					<p class="rt04">
+	    						<span class="list-price">2888</span>
+	    						<span class="list-add"></span>
+	    					</p>
+	    				</div>
+	    			</div>-->
+	    		</div>
+	    	</div>
+	    	<!--<div class="back-top">
+	    		<a href="#back-top">
+	    			<p class="p-back-top"></p>
+	    		</a>
+	    	</div>-->
+		</div>
+		
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+//			mui.plusReady(function(){                      
+//			    plus.webview.currentWebview().setStyle({
+//			        statusbar:{background:'#EBC175'},top:0,bottom: 0
+//			　　});
+//			});
+			mui.ready(function(){//页面加载完毕之后执行此处的代码
+				var requrl=localStorage.getItem("requrl");	//从localStorage中获取接口地址
+				console.log(requrl);
+				mui.ajax(requrl,{
+						data:{
+							rnum:"15"
+						},
+						dataType:'json',//服务器返回json格式数据
+						type:'post',//HTTP请求类型
+						timeout:10000,//超时时间设置为10秒；
+						headers:{'Content-Type':'application/x-www-form-urlencoded'},
+						success:function(data){
+							var itembox = document.getElementById("list-lu");
+							console.log(JSON.stringify(data));
+							var itemlisthtml="";
+							for(var i=0;i<data.length;i++){
+								itemlisthtml+='<div class="list-meal">';
+									itemlisthtml+='<div class="left-img" id="'+data[i].id+'">';
+//										itemlisthtml+='<img src="http://10.150.124.23:8080/YongshanManage/upload/'+data[i].imgurl+'"/>';
+										itemlisthtml+='<img src="http://192.168.43.179:8080/YongshanManage/upload/'+data[i].imgurl+'"/>';
+									itemlisthtml+='</div>';
+									itemlisthtml+='<div class="right-text">';
+										itemlisthtml+='<h5>'+data[i].proname+'</h5>';
+										itemlisthtml+='<p class="rt01">';
+											itemlisthtml+='<span class="score">4.8</span>';
+											itemlisthtml+='<span class="amount">月销量1438</span>';
+											itemlisthtml+='<span class="time">30分钟</span>';
+										itemlisthtml+='</p>';
+										itemlisthtml+='<p class="rt02">菜系：'+data[i].kind+'</p>';
+										itemlisthtml+='<p class="rt03">菜品：'+data[i].brief+'</p>';
+										itemlisthtml+='<p class="rt04">';
+											itemlisthtml+='<span class="list-price">'+data[i].price+'</span>';
+											itemlisthtml+='<span class="list-add" id="'+data[i].id+'"></span>';
+										itemlisthtml+='</p>';
+									itemlisthtml+='</div>';
+								itemlisthtml+='</div>';
+							}
+							itembox.innerHTML=itemlisthtml;
+						}
+				});
+				mui("#list-lu").on("tap","span.list-add",function(){
+					var currentid=this.id;
+					var userid=localStorage.getItem("id");
+					mui.ajax(requrl,{
+						data:{
+							rnum:"5",
+							userid:userid,
+                  			proid:currentid
+						},
+						dataType:'json',//服务器返回json格式数据
+						type:'post',//HTTP请求类型
+						timeout:10000,//超时时间设置为10秒；
+						headers:{'Content-Type':'application/x-www-form-urlencoded'},
+						success:function(data){
+							console.log(JSON.stringify(data));
+							var car= plus.webview.getWebviewById("oder-form.html");
+							mui.fire(car,'bindcardata');
+//							var main= plus.webview.getWebviewById("index.html");
+//							mui.fire(main,'gocar');
+//							mui.back();
+						mui.toast("成功加入订单！")
+						}
+					});
+				});
+			});
+		</script>
+	</body>
+
+</html>

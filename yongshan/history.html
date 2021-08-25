@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+		<link rel="stylesheet" type="text/css" href="css/icons-extra02.css"/>
+		<link rel="stylesheet" type="text/css" href="css/history.css"/>
+	</head>
+
+	<body>
+		<div class="mui-content">
+		    <header class="mui-bar mui-bar-nav">
+		        <a class="mui-action-back mui-icon mui-icon-extra02 mui-icon-extra-undo2 mui-pull-left"></a>
+		        <h1 class="mui-title">历史订单</h1>
+		    </header>
+		    <div class="h-all" id="h-all">
+			    <!--<div class="h-list">
+			    	<div class="h-detail01">
+			    		<h4>订单基本信息</h4>
+			    		<p>取餐者：<span>XXXXX</span></p>
+			    		<p>下单时间：<span>XXXXX</span></p>
+			    		<p>点餐费用：<span>XXXXX</span></p>
+			    		<p>取餐地址：<span>XXXXX</span></p>
+			    		<p>门牌号：<span>XXXXX</span></p>
+			    		<p class="pull-down" id="pull-down"></p>
+			    	</div>
+			    	<div class="h-detail02 hidden" id="h-detail02">
+			    		<h4>订单明细</h4>
+			    		<p>鱼子酱：<span>200</span>X<span>2份</xspan></p>
+			    		<p>配送费：2元</p>
+			    		<p>包装费：1元</p>
+			    		<p>总价：<span>403元</span></p>
+			    	</div>
+			    </div>
+			    <div class="h-list">
+			    	<div class="h-detail01">
+			    		<h4>订单基本信息</h4>
+			    		<p>取餐者：<span>XXXXX</span></p>
+			    		<p>下单时间：<span>XXXXX</span></p>
+			    		<p>点餐费用：<span>XXXXX</span></p>
+			    		<p>取餐地址：<span>XXXXX</span></p>
+			    		<p>门牌号：<span>XXXXX</span></p>
+			    		<p class="pull-down" id="pull-down"></p>
+			    	</div>
+			    	<div class="h-detail02 hidden" id="h-detail02">
+			    		<h4>订单明细</h4>
+			    		<p>鱼子酱：<span>200</span>X<span>2份</xspan></p>
+			    		<p>配送费：2元</p>
+			    		<p>包装费：1元</p>
+			    		<p>总价：<span>403元</span></p>
+			    	</div>
+			    </div>-->
+		    </div>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+//			mui.plusReady(function(){                      
+//			    plus.webview.currentWebview().setStyle({
+//			        statusbar:{background:'#EBC175'},top:0,bottom: 0
+//			　　});
+//			});
+			
+//			$(function(){
+//				//监听点击数件
+//				$(".h-all .h-list").click(function(){
+//					//拿到二级菜单
+//					var $sub=$(this).children(".h-detail02");
+//					//让二级菜单展开
+//					$sub.slideToggle();					
+//				});	 
+//			});
+			
+//			var btn = $('.h-list').find('.pull-down');
+//		    var spread = $('.h-list').find('.h-detail02');
+//		    btn.click(function () {
+//		        spread.slideToggle();
+//		    });
+
+			mui.ready(function(){
+				var requrl=localStorage.getItem("requrl");
+				var currentuserid=localStorage.getItem("id");
+				mui.ajax(requrl,{
+						data:{
+							rnum:"10",
+	                  		userid:currentuserid
+						},
+						dataType:'json',//服务器返回json格式数据
+						type:'post',//HTTP请求类型
+						timeout:10000,//超时时间设置为10秒；
+						headers:{'Content-Type':'application/x-www-form-urlencoded'},
+						success:function(data){
+			                console.log(JSON.stringify(data));
+							var orderhtml="";
+							for (var i=0;i<data.length;i++) {
+								orderhtml+=' <div class="h-list" data-orderid="'+data[i].orderid+'">';
+									orderhtml+='<div class="h-detail01" id="'+data[i].userid+'" >';
+										orderhtml+='<h4>订单基本信息</h4>';
+										orderhtml+='<p class="orderid"> 订单号：<span>'+data[i].orderid+'</span></p>';
+										orderhtml+='<p class="sname"> 取餐者：<span>'+data[i].sname+'</span></p>';
+										orderhtml+='<p class="stel"> 取餐电话：<span>'+data[i].stel+'</span></p>';
+										orderhtml+='<p class="saddress"> 取餐地址：<span>'+data[i].saddress+'</span></p>';
+										orderhtml+='<p class="snumber"> 门牌号：<span>'+data[i].snumber+'</span></p>';
+										orderhtml+='<p class="ctime"> 下单时间：<span>'+data[i].ctime+'</span></p>';
+										orderhtml+='<p class="sumprice"> 点餐费用：<span>'+data[i].sumprice+'元</span></p>';
+										orderhtml+='<p class="pull-down"></p>';
+									orderhtml+='</div>';
+									orderhtml+='<div class="h-detail02 hidden">';
+										orderhtml+='<h4 class="h4">订单明细</h4>';
+										orderhtml+='<div class="h-detail03">';
+//											orderhtml+='<p>鱼子酱：<span>200</span>X<span>2份</xspan></p>';
+										orderhtml+='</div>';
+										orderhtml+='<p class="charge"> 配送费：2元</p>';
+										orderhtml+='<p class="charge"> 包装费：1元</p>';
+									orderhtml+='</div>';
+								orderhtml+='</div>';
+							}
+							document.getElementById("h-all").innerHTML=orderhtml;
+							$(function(){
+								//监听点击数件
+								$(".h-all").on("click","div.h-list",function(){
+									var orderid=$(this).attr("data-orderid");
+									var that=this;
+									//console.log($(this).parent().html());
+									$.post(requrl,{	
+											rnum:"21",
+											orderid:orderid
+										},
+										function(data1){
+											console.log(JSON.stringify(data1));
+											var orderitemhtml="";
+											for (var j=0;j<data1.length;j++) {
+												orderitemhtml+='<p class="proname"> '+data1[j].proname+'：<span>'+data1[j].price+'元</span>&nbsp;*&nbsp;<span>'+data1[j].procount+'份</xspan></p>';
+											}
+											$(that).find(".h-detail03").html(orderitemhtml);
+									});
+									//拿到二级菜单
+									var $sub=$(this).children(".h-detail02");
+									//让二级菜单展开
+									$sub.slideToggle();				
+								});	 
+							});
+						}
+				});
+			});
+		</script>
+	</body>
+
+</html>

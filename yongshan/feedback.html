@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/icons-extra02.css"/>
+		<link rel="stylesheet" type="text/css" href="css/feedback.css"/>
+	</head>
+
+	<body>
+		<div class="mui-content">
+		    <header class="mui-bar mui-bar-nav">
+		        <a class="mui-action-back mui-icon mui-icon-extra02 mui-icon-extra-undo2 mui-pull-left"></a>
+		        <h1 class="mui-title">意见反馈</h1>
+		    </header>
+		    <div class="feedback-txt">
+		    	<form action="" method="post">
+		    		<div class="ys-input-row">
+		    			<textarea class="fb-txtarea" name="fb-txtarea" id="fb-content" rows="10" cols="10" placeholder="请留下您的宝贵意见或建议，我们将努力改进（不少于五个字）"></textarea>
+		    		</div>
+		    		<div class="ys-input-row">
+		    			<input class="fb-tel"  type="text" name="text" id="fb-tel" value="" placeholder="请留下手机号码，以便我们回复您" />
+			    	</div>
+			    	<div class="ys-input-row">
+			    	    <button type="button" class="ys-btn" id="btn-up">提交</button>
+			    	</div>
+		    	</form>
+		    </div>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+//			mui.plusReady(function(){                      
+//			    plus.webview.currentWebview().setStyle({
+//			        statusbar:{background:'#EBC175'},top:0,bottom: 0
+//			　　});
+//			});
+			document.getElementById("btn-up").addEventListener("tap",function(){
+				var vcontent=document.getElementById("fb-content").value;
+				var vtel=document.getElementById("fb-tel").value;
+				//var requrl="http://192.168.43.179:8080/YongshanManage/JavaApi"
+				var requrl=localStorage.getItem("requrl");
+				mui.ajax(requrl,{
+						data:{
+							rnum:"12",
+	                  		content:vcontent,
+	                  		tel:vtel
+						},
+						dataType:'json',//服务器返回json格式数据
+						type:'post',//HTTP请求类型
+						timeout:10000,//超时时间设置为10秒；
+						headers:{'Content-Type':'application/x-www-form-urlencoded'},
+						success:function(data){
+							mui.toast("提交成功!");
+							mui.openWindow({
+								url:"mine.html",
+								id:"mine.html"
+							});
+							console.log(JSON.stringify(data));
+							setTimeout(function(){
+								mui.back();
+							},1000);
+							
+						}
+				});
+			});
+		</script>
+	</body>
+
+</html>

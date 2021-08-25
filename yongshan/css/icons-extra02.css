@@ -1,0 +1,29 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fonts/icomoon.eot?3y54y8');
+  src:  url('../fonts/icomoon.eot?3y54y8#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?3y54y8') format('truetype'),
+    url('../fonts/icomoon.woff?3y54y8') format('woff'),
+    url('../fonts/icomoon.svg?3y54y8#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+.mui-icon-extra02
+{
+    font-family: 'icomoon';
+    font-size: 24px;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1;
+    display: inline-block;
+    text-decoration: none;
+    -webkit-font-smoothing: antialiased;
+}
+.mui-icon-extra-xiaomi:before { content: "\e901"; }
+.mui-icon-extra-headphones:before { content: "\e918"; }
+.mui-icon-extra-eye-off:before { content: "\e90e"; }
+.mui-icon-extra-icon-user:before { content: "\e971"; }
+.mui-icon-extra-icon-home:before { content: "\e90a"; }
+.mui-icon-extra-file-text:before { content: "\e939"; }
+.mui-icon-extra-undo2:before { content: "\e967"; }

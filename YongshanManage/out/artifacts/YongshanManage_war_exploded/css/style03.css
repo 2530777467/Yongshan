@@ -1,0 +1,16 @@
+.clock{
+	width: auto;
+}
+.flip-clock-dot{
+	background: #EBC175;
+}
+.flip-clock-meridium a{
+	color: #EBC175;
+}
+.flip-clock-wrapper{
+	width: 480px;
+	position: absolute; 
+	top: 50%; 
+	left: 50%; 
+	transform: translate(-50%,-50%); 
+}
